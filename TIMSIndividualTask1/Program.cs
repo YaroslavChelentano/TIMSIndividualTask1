@@ -9,6 +9,48 @@ namespace TIMSIndividualTask1
 {
     class Program
     {
+        public static double Excess(int[] mi, int[] xi, double n)
+        {
+            List<double> news = NewS(mi, xi, n);
+            double news4 = news[3];
+            double s4 = Math.Pow(Math.Sqrt(LineDB(mi, xi, n)), 4);
+            double result = news4 / s4;
+            return result;
+        }
+        public static double Asimetria(int[] mi, int[] xi, double n)
+        {
+            List<double> news = NewS(mi, xi, n);
+            double news3 = news[2];
+            double s3 = Math.Pow(Math.Sqrt(LineDB(mi, xi, n)), 3);
+            double result = news3 / s3;
+            return result;
+        }
+        public static List<double> NewS(int[] mi, int[] xi, double n)
+        { 
+            List<double> NewSArray = new List<double> { };
+            double sum0 = 0, sum1 = 0, sum2 = 0, sum3 = 0;
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum0 += Math.Pow(Math.Abs(xi[i] - LineXB(mi, xi, n)),1) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum1 += Math.Pow(Math.Abs(xi[i] - LineXB(mi, xi, n)), 2) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum2 += Math.Pow(Math.Abs(xi[i] - LineXB(mi, xi, n)), 3) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum3 += Math.Pow(Math.Abs(xi[i] - LineXB(mi, xi, n)), 4) * (mi[i] / n);
+            }
+            NewSArray.Add(sum0);
+            NewSArray.Add(sum1);
+            NewSArray.Add(sum2);
+            NewSArray.Add(sum3);
+            return NewSArray;
+        }
         public static List<double>  Ms(int[] mi, int[] xi, double n)
         {
             List<double> Ms = new List<double> { };
@@ -113,7 +155,7 @@ namespace TIMSIndividualTask1
             //    streamWriter.Close();
             //} 
             // ініціалізація масиву
-            int[] array = new int[6] { 1, 1, 2, 3, 4, 3};
+            int[] array = new int[6] { 1, 1, 2, 3, 4, 3 };
             // сортування
             Array.Sort(array);
             Console.WriteLine();
@@ -154,7 +196,7 @@ namespace TIMSIndividualTask1
             Console.WriteLine(Mediana(array));
 
             Console.WriteLine("Розмах");
-            Console.WriteLine(xi[xi.Length - 1 ] - xi[0]);
+            Console.WriteLine(xi[xi.Length - 1] - xi[0]);
 
             Console.WriteLine("Статистична дисперсія");
             Console.WriteLine(LineDB(mi, xi, array.Length));
@@ -163,12 +205,12 @@ namespace TIMSIndividualTask1
             Console.WriteLine(Math.Sqrt(LineDB(mi, xi, array.Length)));
 
             Console.WriteLine("Виправлена статистична дисперсія");
-            Console.WriteLine((array.Length/(array.Length-1))*Math.Pow(LineDB(mi, xi, array.Length),2));
+            Console.WriteLine((array.Length / (array.Length - 1)) * Math.Pow(LineDB(mi, xi, array.Length), 2));
 
             Console.WriteLine("Середнє лінійне відхилення");
             Console.WriteLine(ShapockaP(mi, xi, array.Length));
 
-            Console.WriteLine( "Коефіцієнт варіації за середнім лінійним відхиленням");
+            Console.WriteLine("Коефіцієнт варіації за середнім лінійним відхиленням");
             Console.WriteLine($"{LineVP(mi, xi, array.Length)}%");
 
             Console.WriteLine("Коефіцієнт варіації за середнім квадратичним відхиленням");
@@ -177,6 +219,16 @@ namespace TIMSIndividualTask1
             Console.WriteLine("Початковий статистичний момент вибірки");
             foreach (var msi in Ms(mi, xi, array.Length))
                 Console.WriteLine(msi);
+
+            Console.WriteLine("Центральний статистичний момент");
+            foreach (var newsi in NewS(mi, xi, array.Length))
+                Console.WriteLine(newsi);
+
+            Console.WriteLine("Асиметрія");
+            Console.WriteLine(Asimetria(mi, xi, array.Length));
+
+            Console.WriteLine("Ексцес");
+            Console.WriteLine(Excess(mi, xi, array.Length));
         }
     }
 }
