@@ -9,7 +9,11 @@ namespace TIMSIndividualTask1
 {
     class Program
     {
+        // середнє арифметичне значення вибірки
+        public static double LineXB(int[] array)
+        {
 
+        }
         static void Main(string[] args)
         {
             string filePath = @"D:\Навчання\Програмування\git\TIMSIndividualTask1\TIMSIndividualTask1\Вибірка.txt";
@@ -39,12 +43,17 @@ namespace TIMSIndividualTask1
                                       .ToDictionary(g => g.Key,
                                                     g => g.Count());
             Console.WriteLine();
-            int[] mi=
+            int[] mi = counts.Values.ToArray();
             foreach (KeyValuePair<int, int> keyValue in counts)
             {
                 // keyValue.Value представляет класс Person
                 Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
             }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                Console.Write(" " + mi[i]);
+            }
+
         }
     }
 }
