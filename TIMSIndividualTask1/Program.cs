@@ -9,6 +9,28 @@ namespace TIMSIndividualTask1
 {
     class Program
     {
+        public static double[] Emperichna(int[] mi,int[] xi,double n)
+        {
+            double[] wi = Wi(mi, n);
+            double[] fx = new double[xi.Length + 1];
+            double sum = 0;
+            fx[0] = 0;
+            for (int i = 0,j=1; i < xi.Length; i++,j++)
+            {
+                sum += wi[i];
+                fx[j] = sum;
+            }
+            return fx;
+        }
+        public static double[] Wi(int[] mi,  double n)
+        {
+            double[] wi = new double[mi.Length];
+            for (int i=0;i<mi.Length;i++)
+            {
+                wi[i] = mi[i] / n;
+            }
+            return wi;
+        }
         public static double Excess(int[] mi, int[] xi, double n)
         {
             List<double> news = NewS(mi, xi, n);
@@ -229,6 +251,15 @@ namespace TIMSIndividualTask1
 
             Console.WriteLine("Ексцес");
             Console.WriteLine(Excess(mi, xi, array.Length));
+
+            Console.WriteLine("Відносна частота");
+            foreach (var wi in Wi(mi, array.Length))
+                Console.WriteLine(wi);
+
+            Console.WriteLine("Емпірична функція розподілу");
+            foreach (var fx in Emperichna(mi, xi, array.Length))
+                Console.WriteLine(fx);
+
         }
     }
 }
