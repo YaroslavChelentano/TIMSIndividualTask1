@@ -9,10 +9,42 @@ namespace TIMSIndividualTask1
 {
     class Program
     {
+        public static List<double>  Ms(int[] mi, int[] xi, double n)
+        {
+            List<double> Ms = new List<double> { };
+            double sum0=0 , sum1=0 ,sum2=0 , sum3 = 0;
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum0 += Math.Pow(xi[i],1) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum1 += Math.Pow(xi[i], 2) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum2 += Math.Pow(xi[i], 3) * (mi[i] / n);
+            }
+            for (int i = 0; i < mi.Length; i++)
+            {
+                sum3 += Math.Pow(xi[i], 4) * (mi[i] / n);
+            }
+            Ms.Add(sum0);
+            Ms.Add(sum1);
+            Ms.Add(sum2);
+            Ms.Add(sum3);
+            return Ms;
+        }
         public static double LineVP(int[] mi, int[] xi, double n)
         {
             double sum = 0;
             sum = (ShapockaP(mi, xi, n) / LineXB(mi, xi, n)) * 100;
+            return sum;
+        }
+        public static double LineVS(int[] mi, int[] xi, double n)
+        {
+            double sum = 0;
+            sum = Math.Sqrt(LineDB(mi, xi, n)) / LineXB(mi, xi, n) * 100;
             return sum;
         }
         // дисперсія 
@@ -139,6 +171,12 @@ namespace TIMSIndividualTask1
             Console.WriteLine( "Коефіцієнт варіації за середнім лінійним відхиленням");
             Console.WriteLine($"{LineVP(mi, xi, array.Length)}%");
 
+            Console.WriteLine("Коефіцієнт варіації за середнім квадратичним відхиленням");
+            Console.WriteLine($"{LineVS(mi, xi, array.Length)}%");
+
+            Console.WriteLine("Початковий статистичний момент вибірки");
+            foreach (var msi in Ms(mi, xi, array.Length))
+                Console.WriteLine(msi);
         }
     }
 }
