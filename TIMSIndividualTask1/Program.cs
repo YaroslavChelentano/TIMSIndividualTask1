@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TIMSIndividualTask1
 {
-    class Program
+    public class Program
     {
         public static double[] Emperichna(int[] mi,int[] xi,double n)
         {
@@ -157,9 +158,16 @@ namespace TIMSIndividualTask1
             }
             return mediana;
         }
-
-        static void Main(string[] args)
+        public static int[] array = new int[6] { 1, 1, 2, 3, 4, 3 };
+        public static Dictionary<int, int> counts = array.GroupBy(x => x)
+                                      .ToDictionary(g => g.Key,
+                                                    g => g.Count());
+        public static int[] mi = counts.Values.ToArray(); // випишемо mi окремо в масив
+        public static int[] xi = counts.Keys.ToArray(); // випишемо xi окремо в масив
+        [STAThread]
+        public static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
             string filePath = @"D:\Навчання\Програмування\git\TIMSIndividualTask1\TIMSIndividualTask1\Вибірка.txt";
             Random randomNumber = new Random();
             //int[] array = new int[100];
@@ -177,7 +185,6 @@ namespace TIMSIndividualTask1
             //    streamWriter.Close();
             //} 
             // ініціалізація масиву
-            int[] array = new int[6] { 1, 1, 2, 3, 4, 3 };
             // сортування
             Array.Sort(array);
             Console.WriteLine();
@@ -187,12 +194,9 @@ namespace TIMSIndividualTask1
                 Console.Write(" " + array[i]);
             }
             // створення таблиці xi mi в словнику
-            Dictionary<int, int> counts = array.GroupBy(x => x)
-                                      .ToDictionary(g => g.Key,
-                                                    g => g.Count());
+            
             Console.WriteLine();
-            int[] mi = counts.Values.ToArray(); // випишемо mi окремо в масив
-            int[] xi = counts.Keys.ToArray(); // випишемо xi окремо в масив
+
             foreach (KeyValuePair<int, int> keyValue in counts)
             {
                 Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
@@ -259,7 +263,7 @@ namespace TIMSIndividualTask1
             Console.WriteLine("Емпірична функція розподілу");
             foreach (var fx in Emperichna(mi, xi, array.Length))
                 Console.WriteLine(fx);
-
+            Application.Run(new PoligonChastotForm());
         }
     }
 }
