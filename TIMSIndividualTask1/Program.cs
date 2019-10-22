@@ -197,11 +197,18 @@ namespace TIMSIndividualTask1
             
             Console.WriteLine();
 
-            foreach (KeyValuePair<int, int> keyValue in counts)
+            Console.WriteLine("xi");
+            foreach(var xii in xi)
             {
-                Console.WriteLine(keyValue.Key + " - " + keyValue.Value);
+                Console.Write(xii+" ");
             }
-            Console.WriteLine("Мода");
+
+            Console.WriteLine("\nmi");
+            foreach (var mii in mi)
+            {
+                Console.Write(mii + " ");
+            }
+            Console.WriteLine("\nМода");
             var max = mi.Max();
             foreach (KeyValuePair<int, int> keyValue in counts)
             {
@@ -264,6 +271,8 @@ namespace TIMSIndividualTask1
             foreach (var fx in Emperichna(mi, xi, array.Length))
                 Console.WriteLine(fx);
             Application.Run(new PoligonChastotForm());
+            Application.Run(new NeperervniiForm());
+            Application.Run(new Histograma());
         }
     }
 }

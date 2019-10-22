@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Histograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Histograma.Designer.cs">
+      <DependentUpon>Histograma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NeperervniiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NeperervniiForm.Designer.cs">
+      <DependentUpon>NeperervniiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PoligonChastotForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Histograma.resx">
+      <DependentUpon>Histograma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NeperervniiForm.resx">
+      <DependentUpon>NeperervniiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PoligonChastotForm.resx">
       <DependentUpon>PoligonChastotForm.cs</DependentUpon>
     </EmbeddedResource>
