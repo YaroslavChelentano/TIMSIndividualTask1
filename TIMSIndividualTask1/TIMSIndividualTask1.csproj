@@ -53,17 +53,23 @@
     <Compile Include="Histograma.Designer.cs">
       <DependentUpon>Histograma.cs</DependentUpon>
     </Compile>
-    <Compile Include="NeperervniiForm.cs">
+    <Compile Include="DiskretniyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NeperervniiForm.Designer.cs">
-      <DependentUpon>NeperervniiForm.cs</DependentUpon>
+    <Compile Include="DiskretniyForm.Designer.cs">
+      <DependentUpon>DiskretniyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PoligonChastotForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PoligonChastotForm.Designer.cs">
       <DependentUpon>PoligonChastotForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PoligonChastotWIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PoligonChastotWIForm.Designer.cs">
+      <DependentUpon>PoligonChastotWIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +81,14 @@
     <EmbeddedResource Include="Histograma.resx">
       <DependentUpon>Histograma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NeperervniiForm.resx">
-      <DependentUpon>NeperervniiForm.cs</DependentUpon>
+    <EmbeddedResource Include="DiskretniyForm.resx">
+      <DependentUpon>DiskretniyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PoligonChastotForm.resx">
       <DependentUpon>PoligonChastotForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PoligonChastotWIForm.resx">
+      <DependentUpon>PoligonChastotWIForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

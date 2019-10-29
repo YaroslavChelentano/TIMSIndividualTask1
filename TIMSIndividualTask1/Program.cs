@@ -158,7 +158,28 @@ namespace TIMSIndividualTask1
             }
             return mediana;
         }
-        public static int[] array = new int[6] { 1, 1, 2, 3, 4, 3 };
+        public static int[] GetArray()
+        {
+            string filePath = @"D:\Навчання\Програмування\git\TIMSIndividualTask1\TIMSIndividualTask1\Вибірка.txt";
+            Random randomNumber = new Random();
+            int[] array = new int[100];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = randomNumber.Next(0, 10);
+                Console.Write(" " + array[i]);
+            }
+            using (StreamWriter streamWriter = new StreamWriter(filePath))
+            {
+                foreach (var number in array)
+                {
+                    streamWriter.Write(number + " ");
+                }
+                streamWriter.Close();
+            }
+            Array.Sort(array);
+            return array;
+        }
+        public static int[] array = GetArray();
         public static Dictionary<int, int> counts = array.GroupBy(x => x)
                                       .ToDictionary(g => g.Key,
                                                     g => g.Count());
@@ -271,7 +292,8 @@ namespace TIMSIndividualTask1
             foreach (var fx in Emperichna(mi, xi, array.Length))
                 Console.WriteLine(fx);
             Application.Run(new PoligonChastotForm());
-            Application.Run(new NeperervniiForm());
+            Application.Run(new PoligonChastotWIForm());
+            Application.Run(new DiskretniyForm());
             Application.Run(new Histograma());
         }
     }

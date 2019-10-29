@@ -11,9 +11,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TIMSIndividualTask1
 {
-    public partial class NeperervniiForm : Form
+    public partial class DiskretniyForm : Form
     {
-        public NeperervniiForm()
+        public DiskretniyForm()
         {
             InitializeComponent();
         }
@@ -48,8 +48,8 @@ namespace TIMSIndividualTask1
             //    double krok += 
             //    IntervalsXi[i] = krok;
             //}
-            
-            //chart1.Series["Series1"].ChartType = SeriesChartType.Line;
+
+            chart1.Series["Series1"].ChartType = SeriesChartType.StepLine;
             for (int i = 0; i < IntervalsXi.Length; i++)
                 chart1.Series[0].Points.AddXY(IntervalsXi[i], Program.Emperichna(Program.mi, Program.xi, Program.array.Length)[i]);
         }
